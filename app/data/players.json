@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "bob",
+    "points": 39,
+    "wins": 1,
+    "losses": 3,
+    "draws": 0
+  },
+  {
+    "id": 2,
+    "name": "william",
+    "points": 142,
+    "wins": 2,
+    "losses": 2,
+    "draws": 0
+  },
+  {
+    "id": 3,
+    "name": "thobias",
+    "points": 13,
+    "wins": 2,
+    "losses": 0,
+    "draws": 0
+  }
+]

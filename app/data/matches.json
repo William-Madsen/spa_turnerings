@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "winner": "william",
+    "loser": "bob",
+    "winnerScore": 14,
+    "loserScore": 13,
+    "date": "2026-10-31T17:32:33.396Z"
+  },
+  {
+    "id": 2,
+    "winner": "william",
+    "loser": "bob",
+    "winnerScore": 123,
+    "loserScore": 12,
+    "date": "2026-10-31T17:37:27.087Z"
+  },
+  {
+    "id": 3,
+    "winner": "bob",
+    "loser": "william",
+    "winnerScore": 12,
+    "loserScore": 3,
+    "date": "2026-10-31T17:52:37.287Z"
+  },
+  {
+    "id": 4,
+    "winner": "thobias",
+    "loser": "william",
+    "winnerScore": 1,
+    "loserScore": 2,
+    "date": "2026-10-31T18:56:40.605Z"
+  },
+  {
+    "id": 5,
+    "winner": "thobias",
+    "loser": "bob",
+    "winnerScore": 12,
+    "loserScore": 2,
+    "date": "2026-10-31T18:57:15.926Z"
+  }
+]

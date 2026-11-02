@@ -2,22 +2,29 @@
   {
     "id": 1,
     "name": "bob",
-    "points": 24,
-    "wins": 1,
-    "losses": 2
+    "points": 73,
+    "wins": 5,
+    "losses": 3
   },
   {
     "id": 2,
     "name": "william",
-    "points": 45,
-    "wins": 3,
-    "losses": 2
+    "points": 82,
+    "wins": 5,
+    "losses": 3
   },
   {
     "id": 3,
     "name": "thomas",
-    "points": 12,
+    "points": 54,
+    "wins": 2,
+    "losses": 3
+  },
+  {
+    "id": 4,
+    "name": "benjamin",
+    "points": 45,
     "wins": 1,
-    "losses": 1
+    "losses": 4
   }
 ]

@@ -50,19 +50,20 @@ export async function POST(request: Request) {
     (player: any) => player.name === loser.trim(),
   );
 
-  if (!winnerPlayer || !loserPlayer) {
-    return NextResponse.json(
-      { error: "Vinder eller taber findes ikke" },
-      { status: 404 },
-    );
-  }
-
   if (winnerPlayer.id === loserPlayer.id) {
     return NextResponse.json(
       { error: "En spiller kan ikke spille mod sig selv" },
       { status: 400 },
     );
   }
+
+  if (winnerScore < loserScore) {
+    return NextResponse.json(
+      { error: "Vinderen skal have flere point end taberen" },
+      { status: 400 },
+    );
+  }
+
   winnerPlayer.wins++;
   loserPlayer.losses++;
 

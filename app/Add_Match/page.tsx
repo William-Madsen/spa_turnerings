@@ -1,14 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+
+type Player = {
+  id: number;
+  name: string;
+};
 
 export default function AddMatchPage() {
   const [winner, setWinner] = useState("");
   const [loser, setLoser] = useState("");
+  const [players, setPlayers] = useState<Player[]>([]);
+  const [isLoadingPlayers, setIsLoadingPlayers] = useState(true);
   const [winnerScore, setWinnerScore] = useState("");
   const [loserScore, setLoserScore] = useState("");
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      try {
+        const response = await fetch("/api/players");
+
+        if (!response.ok) {
+          throw new Error("Kunne ikke hente spillere");
+        }
+
+        const data: Player[] = await response.json();
+        setPlayers(data);
+      } catch {
+        setMessage("Kunne ikke hente spillere.");
+      } finally {
+        setIsLoadingPlayers(false);
+      }
+    };
+
+    fetchPlayers();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,6 +46,7 @@ export default function AddMatchPage() {
       headers: {
         "Content-Type": "application/json",
       },
+
       body: JSON.stringify({
         winner: winner,
         loser: loser,
@@ -28,6 +57,7 @@ export default function AddMatchPage() {
     const data = await response.json();
 
     if (response.ok) {
+      setMessage("");
       setMessage("Kampen er blevet registreret.");
 
       setWinner("");
@@ -35,6 +65,7 @@ export default function AddMatchPage() {
       setWinnerScore("");
       setLoserScore("");
     } else {
+      setMessage("");
       setMessage(data.error || "Der opstod en fejl.");
     }
   };
@@ -55,15 +86,23 @@ export default function AddMatchPage() {
               >
                 Vinder
               </label>
-              <input
+              <select
                 id="winner"
                 name="winner"
                 value={winner}
                 onChange={(e) => setWinner(e.target.value)}
                 className="w-full rounded-lg border border-[#a5b6c7] bg-[#495057] px-4 py-3 text-white  placeholder:text-[#d9e2ec]  focus:ring-[#ff4d4d] "
-                placeholder="Vælg spiller"
                 required
-              />
+              >
+                <option value="">
+                  {isLoadingPlayers ? "Henter spillere..." : "Vælg vinderne"}
+                </option>
+                {players.map((player) => (
+                  <option key={player.id} value={player.name}>
+                    {player.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label
@@ -72,15 +111,23 @@ export default function AddMatchPage() {
               >
                 Taber
               </label>
-              <input
+              <select
                 id="loser"
                 name="loser"
                 value={loser}
                 onChange={(e) => setLoser(e.target.value)}
                 className="w-full rounded-lg border border-[#a5b6c7] bg-[#495057] px-4 py-3 text-white  placeholder:text-[#d9e2ec]  focus:ring-[#ff4d4d]"
-                placeholder="Vælg spiller"
                 required
-              />
+              >
+                <option value="">
+                  {isLoadingPlayers ? "Henter spillere..." : "Vælg taberen"}
+                </option>
+                {players.map((player) => (
+                  <option key={player.id} value={player.name}>
+                    {player.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div>
               <label
@@ -135,7 +182,7 @@ export default function AddMatchPage() {
             </button>
           </div>
           {message && (
-            <p className="text-center font-semibold text-[#ff4d4d]">
+            <p className="text-center font-semibold text-[#ffffff]">
               {message}
             </p>
           )}

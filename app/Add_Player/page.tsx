@@ -22,10 +22,13 @@ export default function AddPlayerPage() {
     });
 
     if (response.ok) {
+      setMessage("");
       setMessage("Deltageren blev oprettet.");
+
       setName("");
     } else {
       const data = await response.json();
+      setError("");
       setError(data.error || "Der opstod en fejl.");
     }
   }
@@ -69,9 +72,15 @@ export default function AddPlayerPage() {
               Tilføj deltager
             </button>
           </div>
-          {message && <p className="text-[#ff4d4d]">{message}</p>}
+          {message && (
+            <p className="text-[#ffffff] text-center font-semibold">
+              {message}
+            </p>
+          )}
 
-          {error && <p className="text-[#ff4d4d] ">{error}</p>}
+          {error && (
+            <p className="text-[#ff4d4d] text-center font-semibold">{error}</p>
+          )}
         </form>
       </section>
     </main>

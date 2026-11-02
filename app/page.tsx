@@ -47,28 +47,31 @@ export default function Home() {
   return (
     <main>
       <div className="flex flex-row gap-6 mt-2 relative">
-        <h1 className="text-2xl font-bold text-white mt-4 px-4">Turneringer</h1>
+        <h1 className="text-2xl font-bold text-white mt-4 px-4">
+          {" "}
+          Bordtenis turnering
+        </h1>
         <div className="flex flex-row gap-4  mt-4 px-4 absolute bottom-0 right-0">
           <button
             onClick={async () => {
               fetchPlayers();
               fetchMatches();
             }}
-            className="rounded-xl bg-[#007bff] px-4 py-3 text-white hover:cursor-pointer "
+            className="rounded-xl bg-[#0059ff] px-4 py-3 text-white hover:cursor-pointer "
           >
             Opdater Tabeller
           </button>
 
           <Link
             href="/Add_Player"
-            className="rounded-xl bg-[#007bff] px-4 py-3 text-white hover:cursor-pointer"
+            className="rounded-xl bg-[#ff4d4d] px-4 py-3 text-white hover:cursor-pointer"
           >
             Tilføj Deltager
           </Link>
 
           <Link
             href="/Add_Match"
-            className="rounded-xl bg-[#007bff] px-4 py-3 text-white hover:cursor-pointer"
+            className="rounded-xl bg-[#ff4d4d] px-4 py-3 text-white hover:cursor-pointer"
           >
             Registrer Kamp
           </Link>

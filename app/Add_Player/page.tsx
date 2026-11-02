@@ -22,7 +22,7 @@ export default function AddPlayerPage() {
     });
 
     if (response.ok) {
-      setMessage("Deltageren blev oprettet!");
+      setMessage("Deltageren blev oprettet.");
       setName("");
     } else {
       const data = await response.json();

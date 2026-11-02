@@ -28,7 +28,7 @@ export default function AddMatchPage() {
     const data = await response.json();
 
     if (response.ok) {
-      setMessage("Kampen er blevet registreret!");
+      setMessage("Kampen er blevet registreret.");
 
       setWinner("");
       setLoser("");

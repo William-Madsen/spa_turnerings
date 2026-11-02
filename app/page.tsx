@@ -25,21 +25,21 @@ export default function Home() {
   const [players, setPlayers] = useState<Participant[]>([]);
   const [matches, setMatches] = useState<Match[]>([]);
 
+  const fetchPlayers = async () => {
+    const response = await fetch("/api/players");
+    const data = await response.json();
+
+    setPlayers(data);
+  };
+
+  const fetchMatches = async () => {
+    const response = await fetch("/api/matches");
+    const data = await response.json();
+
+    setMatches(data);
+  };
+
   useEffect(() => {
-    const fetchPlayers = async () => {
-      const response = await fetch("/api/players");
-      const data = await response.json();
-
-      setPlayers(data);
-    };
-
-    const fetchMatches = async () => {
-      const response = await fetch("/api/matches");
-      const data = await response.json();
-
-      setMatches(data);
-    };
-
     fetchPlayers();
     fetchMatches();
   }, []);
@@ -49,6 +49,16 @@ export default function Home() {
       <div className="flex flex-row gap-6 mt-2 relative">
         <h1 className="text-2xl font-bold text-white mt-4 px-4">Turneringer</h1>
         <div className="flex flex-row gap-4  mt-4 px-4 absolute bottom-0 right-0">
+          <button
+            onClick={async () => {
+              fetchPlayers();
+              fetchMatches();
+            }}
+            className="rounded-xl bg-[#007bff] px-4 py-3 text-white hover:cursor-pointer "
+          >
+            Opdater Tabeller
+          </button>
+
           <Link
             href="/Add_Player"
             className="rounded-xl bg-[#007bff] px-4 py-3 text-white hover:cursor-pointer"

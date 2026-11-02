@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "bob",
-    "points": 73,
+    "points": 1,
     "wins": 5,
     "losses": 3
   },
@@ -23,8 +23,15 @@
   {
     "id": 4,
     "name": "benjamin",
-    "points": 45,
+    "points": 30,
     "wins": 1,
-    "losses": 4
+    "losses": 5
+  },
+  {
+    "id": 5,
+    "name": "mads",
+    "points": 6,
+    "wins": 1,
+    "losses": 0
   }
 ]
